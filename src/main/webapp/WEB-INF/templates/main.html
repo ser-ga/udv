@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta th:replace="fragments/header :: tags"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div th:replace="fragments/categories :: categories"></div>
+
+<div class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 p-3" th:each="folder : ${folders}">
+                <div class="card box-shadow">
+                    <img class="card-img-top" th:src="${folder.imagePath}">
+                    <div class="card-body">
+                        <p class="card-text text-muted"><a th:href="${folder.uri}" th:text="${folder.pageTitle}"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<div th:replace="fragments/scripts :: js"></div>
+
+</body>
+</html>
