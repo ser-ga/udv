@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col-md-4 p-3" th:each="folder : ${folders}">
                 <div class="card box-shadow">
-                    <img class="card-img-top" th:src="${folder.imagePath}">
+                    <img class="card-img-top" th:src="@{/{imagePath}(imagePath=${folder.imagePath})}">
                     <div class="card-body">
-                        <p class="card-text text-muted"><a th:href="${folder.uri}" th:text="${folder.pageTitle}"></a>
+                        <p class="card-text text-muted"><a th:href="@{/{uri}(uri=${folder.uri})}" th:text="${folder.pageTitle}"></a>
                         </p>
                     </div>
                 </div>

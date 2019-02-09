@@ -10,9 +10,7 @@ import ru.udvybor.model.Document;
 import ru.udvybor.repository.DocumentRepository;
 import ru.udvybor.util.DocumentUtil;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.StringJoiner;
 
 @Controller
@@ -33,7 +31,6 @@ public class RootController {
 
     @ModelAttribute("categories")
     public List<List<Document>> categories() {
-        Map<Integer, List<Document>> categories = new HashMap<>();
         List<Document> folders = documentRepository.getMenu(2);
         return DocumentUtil.chunkify(folders, 10);
     }

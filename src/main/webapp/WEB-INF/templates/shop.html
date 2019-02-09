@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12 p-3" th:object="${document}">
                 <div class="card box-shadow">
-                    <img class="card-img-top col-md-4" th:src="'/' + *{imagePath}">
+                    <img class="card-img-top col-md-4" th:src="@{/{imagePath}(imagePath=*{imagePath})}">
                     <div class="card-body">
                         <h1 th:text="*{pageTitle}"></h1>
                         <p th:text="*{content}"></p>

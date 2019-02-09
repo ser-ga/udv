@@ -7,7 +7,7 @@
                 <div class="col-md-4" th:each="cat : ${categories}">
                     <ul class="list-group">
                         <li class=" border-0 list-group-item d-flex justify-content-between align-items-center" th:each="doc : ${cat}">
-                            <a th:href="'/' + ${doc.uri}" th:text="${doc.pageTitle}"></a>
+                            <a th:href="@{/{uri}(uri=${doc.uri})}" th:text="${doc.pageTitle}"></a>
                         </li>
                     </ul>
                 </div>

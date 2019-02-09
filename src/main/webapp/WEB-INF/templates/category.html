@@ -20,13 +20,13 @@
         <div class="row" th:each="child : ${childs}">
             <div class="col-md-3 p-3">
                 <div class="card box-shadow">
-                    <img class="card-img-top" th:src="'/' + ${child.imagePath}">
+                    <img class="card-img-top" th:src="@{/{imagePath}(imagePath=${child.imagePath})}">
                 </div>
             </div>
             <div class="col-md-9 p-3">
                 <div class="card box-shadow">
                     <div class="card-body" th:object="${child}">
-                        <p class="card-text text-muted"><a th:href="'/' + *{uri}" th:text="*{pageTitle}"></a></p>
+                        <p class="card-text text-muted"><a th:href="@{/{uri}(uri=*{uri})}" th:text="*{pageTitle}"></a></p>
                         <p class="card-text text-muted" th:text="*{pageTitle}"></p>
                     </div>
                 </div>
