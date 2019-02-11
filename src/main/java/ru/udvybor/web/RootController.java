@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import ru.udvybor.model.Document;
 import ru.udvybor.repository.DocumentRepository;
 import ru.udvybor.util.DocumentUtil;
+import ru.udvybor.util.exception.NotFoundException;
 
 import java.util.List;
 import java.util.StringJoiner;
+
+import static ru.udvybor.util.ValidationUtil.checkNotFound;
 
 @Controller
 public class RootController {
@@ -40,7 +43,7 @@ public class RootController {
         StringJoiner joiner = new StringJoiner("/");
         joiner.add("online-shops");
         joiner.add(category);
-        Document document = documentRepository.getByUri(joiner.toString());
+        Document document = checkNotFound(documentRepository.getByUri(joiner.toString()), category + " not found");
         model.addAttribute("document", document);
         model.addAttribute("childs", documentRepository.getAllByParentId(document.getId()));
         return "category";
@@ -54,7 +57,8 @@ public class RootController {
         joiner.add("online-shops");
         joiner.add(category);
         joiner.add(shop);
-        Document document = documentRepository.getByUri(joiner.toString());
+        Document document = checkNotFound(documentRepository.getByUri(joiner.toString()), shop + " not found");
+        if (document == null) throw new NotFoundException(category + " not found");
         document.setContent(Jsoup.parse(document.getContent()).text());
         model.addAttribute("document", document);
         return "shop";

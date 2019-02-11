@@ -14,4 +14,5 @@ public interface DocumentRepository {
 
     List<Document> getTop10ByPublishedDate();
 
+    Document create(Document document);
 }

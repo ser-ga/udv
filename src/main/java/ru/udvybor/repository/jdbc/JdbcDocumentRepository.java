@@ -43,6 +43,12 @@ public class JdbcDocumentRepository implements DocumentRepository {
         return jdbcTemplate.query("select site_content.*, images.path as path from site_content left join images on site_content.id=images.contentid WHERE images.path IS NOT NULL ORDER BY site_content.createdon DESC LIMIT 9", new DocumentMapper());
     }
 
+    @Override
+    public Document create(Document document) {
+        // TODO implement this method
+        return new Document();
+    }
+
     private class DocumentMapper implements RowMapper<Document> {
         @Override
         public Document mapRow(ResultSet rs, int rowNum) throws SQLException {
