@@ -31,7 +31,7 @@
         <lombok.version>1.18.2</lombok.version>
 
         <!--DB-->
-        <postgresql.version>42.2.5</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
 
         <!--webjars-->
         <webjars-bootstrap.version>4.1.3</webjars-bootstrap.version>
